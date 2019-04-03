@@ -15,14 +15,14 @@ sql_insert = """insert into sensors(Sensor_ID,Date_and_Time, Temperature, Humidi
 
 def create_table():
 
-	db = pl.connect("localhost", "root", "1" , "WSN")
+	db = pl.connect("localhost", "root", "1" , "nodelogin")
 	cursor = db.cursor()
 	cursor.execute("DROP TABLE IF EXISTS sensors" )
 	cursor.execute(sql_create_table)
 
 	db.close()
 def insert_table(json_data):
-	db = pl.connect("localhost", "root", "1" , "WSN")
+	db = pl.connect("localhost", "root", "1" , "nodelogin")
 	cursor = db.cursor()
 
 	json_Dict = ast.literal_eval(json_data.decode('utf-8'))
@@ -39,7 +39,7 @@ def insert_table(json_data):
 	db.commit()
 	db.close()
 def insert_table_with_raw_data(sensor_id, date_and_time, temperature, humidity):
-	db = pl.connect("localhost", "root", "1" , "WSN")
+	db = pl.connect("localhost", "root", "1" , "nodelogin")
 	cursor = db.cursor()
 	val = (sensor_id, date_and_time, temperature, humidity)
 

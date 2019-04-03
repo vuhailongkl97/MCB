@@ -29,12 +29,15 @@ img{
 #div-taskbar ul li{
     float: left;
     padding: 0;
+    height:100px;
     width: 16.5%;
-    border-left: solid 1px;
+
 }
 
 #div-taskbar ul li a{
     text-decoration: none;
+    width:90%;
+    height:100%;
 }
 
 
@@ -71,9 +74,34 @@ img{
     height: auto;
     margin-top: 25%;
     margin-left: 10%;
+    border: solid 1px;
 }
 
 #div-content .class-haft #div-information table{
     font-size: 150%;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: green;
+}
+
+.topnav a {
+  float :left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
 }
 

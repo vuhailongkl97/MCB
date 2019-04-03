@@ -4,12 +4,9 @@ from datetime import datetime
 from time import sleep
 
 MQTT_Broker = "localhost"
-MQTT_Port = 1883 
+MQTT_Port = 1883
 Keep_Alive_Interval = 45 #thoi gian giua cac lan gui goi tin
-MQTT_Topic = "home/sensors"
-#MQTT_Topic1 = "home/sensors/datetime"
-#MQTT_Topic2 = "home/sensors/temperature"
-#MQTT_Topic3 = "home/sensors/humidity"
+MQTT_Topic1 = "long/heart_rate"
 
 #ham connect den host MQTT
 
@@ -40,30 +37,14 @@ def publish_To_Topic(topic, message):
 
 #FAKE RANDOM SENSOR
 def publish_fake_sensor_values_to_MQTT():
-	Humidity_Fake_Value = int(random.uniform(50,100))	
-	Temperature_Fake_Value = int(random.uniform(20,30))
-	Sensor_data = {}  
-	Sensor_data['Sensor_ID'] = "DHT-11"
-	Sensor_data['Date'] = (datetime.today()).strftime("%Y-%m-%d %H:%M:%S")
-	Sensor_data['Temperature'] = Temperature_Fake_Value
-	Sensor_data['Humidity'] = Humidity_Fake_Value
+	Heart_Rate_Fake_Value = random.randint(50,120)	
+	Sensor_data = {}
+	Sensor_data['heart_rate'] = Heart_Rate_Fake_Value
 	sensor_json_data = json.dumps(Sensor_data)
-	publish_To_Topic(MQTT_Topic,sensor_json_data)
+	publish_To_Topic(MQTT_Topic1,sensor_json_data)
 	sleep(3)
 	
 while True:
 	publish_fake_sensor_values_to_MQTT()
 	sleep(3)
-
-
-
-
-
-
-
-
-
-
-
-
 

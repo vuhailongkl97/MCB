@@ -8,7 +8,6 @@ Keep_Alive_Interval = 45
 MQTT_Topic1 = "home/sensors/datetime"
 MQTT_Topic2 = "home/sensors/temperature"
 MQTT_Topic3 = "home/sensors/humidity"
-MQTT_Topic4 = "longvh_test"
 
 SensorID ="dht11" 
 Date_and_Time ="123" 
@@ -53,7 +52,6 @@ def on_connect(client, userdata, flags, rc):
 	client.subscribe(MQTT_Topic1,0)
 	client.subscribe(MQTT_Topic2,0)
 	client.subscribe(MQTT_Topic3,0)
-	client.subscribe(MQTT_Topic4,0)
 
 
 ml.create_table()

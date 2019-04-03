@@ -9,6 +9,7 @@ Keep_Alive_Interval = 45 #thoi gian giua cac lan gui goi tin
 MQTT_Topic1 = "home/sensors/datetime"
 MQTT_Topic2 = "home/sensors/temperature"
 MQTT_Topic3 = "home/sensors/humidity"
+MQTT_Topic4 = "home/sensors/illumination"
 
 #ham connect den host MQTT
 
@@ -41,6 +42,7 @@ def publish_To_Topic(topic, message):
 def publish_fake_sensor_values_to_MQTT():
 	Humidity_Fake_Value = int(random.uniform(50,100))	
 	Temperature_Fake_Value = int(random.uniform(20,30))
+	Illumination = int(random.uniform(20,1000))
 	Sensor_data = {}  
 	Sensor_data['Sensor_ID'] = "DHT-11"
 	Sensor_data['Date'] = (datetime.today()).strftime("%Y-%m-%d %H:%M:%S")
@@ -59,7 +61,12 @@ def publish_fake_sensor_values_to_MQTT():
 	print("Publishing fake humidity Value: ");
 	sensor_json_data = json.dumps(Sensor_data)
 	publish_To_Topic(MQTT_Topic3,sensor_json_data)
-	sleep(3)
+
+	Sensor_data = {}
+	Sensor_data['Illumination'] =Illumination 
+	print("Publishing fake humidity Value: ");
+	sensor_json_data = json.dumps(Sensor_data)
+	publish_To_Topic(MQTT_Topic4,sensor_json_data)
 	
 while True:
 	publish_fake_sensor_values_to_MQTT()
